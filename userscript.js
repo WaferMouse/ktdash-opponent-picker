@@ -19,9 +19,21 @@ var styleSheet = `
 }
 `;
 
+function makeRow() {
+  const this_el = document.createElement("div");
+  this_el.classList.add("row");
+  return(this_el);
+}
+
+function makeCol() {
+  const this_el = document.createElement("div");
+  this_el.classList.add("col-6");
+  return(this_el);
+}
+
 (function () {
   var wip_enabled = false;
-  //wip_enabled = true;
+  wip_enabled = true;
   /*
   var s = document.createElement('style');
   s.type = "text/css";
@@ -57,7 +69,48 @@ var styleSheet = `
     /* NOTES
     <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" style="font-family: monospace;">
     */
-    
-    
+    const super_container = opponent_selector_container.parentElement;
+
+    const opponent_name_row = makeRow();
+    super_container.appendChild(opponent_name_row);
+
+    const opponent_name_title = makeCol();
+    opponent_name_row.appendChild(opponent_name_title);
+    opponent_name_title.textContent = "Opponent username:";
+
+    const opponent_name_input = document.createElement("div");
+    opponent_name_row.appendChild(opponent_name_input);
+    opponent_name_input.innerHTML = `<input type="text" class="form-control" id="opponent_uname">`;
+
+    const opponent_name_btn = document.createElement("button");
+    opponent_name_row.appendChild(opponent_name_btn);
+    opponent_name_btn.innerHTML = `<button type="button" class="btn btn-primary" id="uname_lookup_btn">Find user</button>`;
+
+    const opponent_team_row = makeRow();
+    super_container.appendChild(opponent_team_row);
+
+    const opponent_team_title = makeCol();
+    opponent_team_row.appendChild(opponent_team_title)
+    opponent_team_title.textContent = "Select opponent team:";
+
+    const opponent_team_selector = document.createElement("div");
+    opponent_team_row.appendChild(opponent_team_selector);
+
+    const opponent_team_input = document.createElement("select");
+    opponent_team_selector.appendChild(opponent_team_input);
+
+    opponent_team_input.outerHTML = `
+      <select class="form-control oswald" id="opponent_team_select">
+        <option value="? object:null ?" selected="selected"></option>
+      </select>
+    `
+    /*
+      <option class="ng-binding ng-scope" value="object:174">
+        Angels Of Death (kt24)
+      </option>
+  */
+
+    //<button type="button" class="btn btn-primary">Confirm</button>
   };
+
 })();
