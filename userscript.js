@@ -8,14 +8,14 @@
 // @downloadURL https://github.com/WaferMouse/ktdash-opponent-picker/raw/refs/heads/main/userscript.js
 // @updateURL   https://github.com/WaferMouse/ktdash-opponent-picker/raw/refs/heads/main/userscript.js
 // @description WIP
-// @match       https://ktdash.app/u/*
+// @match       https://ktdash.app/dashboard
 // @grant       none
 // @run-at      document-end
 // ==/UserScript==
 
 var styleSheet = `
-.ng-binding[title='View Roster'] {
-  text-transform: none !important;
+.mystyle {
+  background: lightblue !important;
 }
 `;
 
@@ -34,4 +34,20 @@ var styleSheet = `
       `</u></div>` + b.innerHTML;
   });
   */
+  var parent_el = document.getElementById("dashboardopponentmodal");
+  var roster_id = parent_el.children[0].children[0].children[1].children[0];
+  console.log(roster_id);
+  var s = document.createElement('style');
+  s.type = "text/css";
+  s.innerHTML = styleSheet;
+  (document.head || document.documentElement).appendChild(s);
+
+  var roster_id_txt = roster_id.children[1].children[0].textContent;
+  roster_id.setAttribute("onClick", "navigator.clipboard.writeText(`" + roster_id_txt + "`)");
+
+  var opponent_selector_container = parent_el.children[0].children[0].children[1].children[1];
+
+  opponent_selector_container.classList.add("mystyle");
+  var opponent_selector_title = opponent_selector_container.children(0);
+  var opponent_selector = opponent_selector_container.children(1);
 })();
