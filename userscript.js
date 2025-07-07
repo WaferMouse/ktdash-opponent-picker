@@ -20,6 +20,8 @@ var styleSheet = `
 `;
 
 (function () {
+  var wip_enabled = false;
+  wip_enabled = true;
   /*
   var s = document.createElement('style');
   s.type = "text/css";
@@ -47,7 +49,9 @@ var styleSheet = `
 
   var opponent_selector_container = parent_el.children[0].children[0].children[1].children[1];
 
-  opponent_selector_container.classList.add("mystyle");
-  var opponent_selector_title = opponent_selector_container.children(0);
-  var opponent_selector = opponent_selector_container.children(1);
+  var opponent_selector_title = opponent_selector_container.children[0];
+  var opponent_selector = opponent_selector_container.children[1];
+  if (wip_enabled) {
+    //opponent_selector.classList.add("mystyle");
+  }
 })();
