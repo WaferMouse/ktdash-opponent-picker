@@ -21,7 +21,7 @@ var styleSheet = `
 
 (function () {
   var wip_enabled = false;
-  wip_enabled = true;
+  //wip_enabled = true;
   /*
   var s = document.createElement('style');
   s.type = "text/css";
@@ -53,5 +53,11 @@ var styleSheet = `
   var opponent_selector = opponent_selector_container.children[1];
   if (wip_enabled) {
     //opponent_selector.classList.add("mystyle");
-  }
+
+    /* NOTES
+    <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" style="font-family: monospace;">
+    */
+    
+    
+  };
 })();
